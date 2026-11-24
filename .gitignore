@@ -1,0 +1,8 @@
+.venv/
+.env
+appointments.jsonl
+__pycache__/
+agent.secrets.env
+livekit.toml
+node_modules/
+.netlify/

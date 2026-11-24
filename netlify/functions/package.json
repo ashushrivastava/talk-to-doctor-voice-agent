@@ -1,0 +1,8 @@
+{
+  "name": "talk-to-doctor",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "livekit-server-sdk": "^2.0.0"
+  }
+}
