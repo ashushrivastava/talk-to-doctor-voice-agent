@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
-// Light is the default for a clinic site; a visitor's own choice is remembered.
+// Dark is the default; a visitor's own choice is remembered.
 function initialTheme(): Theme {
   try {
     const saved = localStorage.getItem("theme");
@@ -10,7 +10,7 @@ function initialTheme(): Theme {
   } catch {
     // storage can be unavailable (private mode)
   }
-  return "light";
+  return "dark";
 }
 
 export function useTheme() {

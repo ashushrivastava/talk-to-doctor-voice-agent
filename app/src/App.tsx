@@ -16,6 +16,7 @@ import { CallButton } from "@/components/call-button";
 import { CallCard } from "@/components/call-card";
 import { CallProvider } from "@/components/call-provider";
 import { HeroAura } from "@/components/hero-aura";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -296,7 +297,25 @@ function Page() {
             </p>
           </div>
           <Separator className="my-6" />
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} The Smile &amp; Glow Studio. All rights reserved.</p>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} The Smile &amp; Glow Studio. All rights reserved.</p>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <span>Designed &amp; developed by</span>
+              <a
+                href="https://www.linkedin.com/in/ashukumar159/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ashu Shrivastava on LinkedIn (opens in a new tab)"
+                className="group flex items-center gap-2.5 rounded-full py-1 pr-3 pl-1 transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring"
+              >
+                <Avatar size="lg">
+                  <AvatarImage src="/ashu-shrivastava.png" alt="" />
+                  <AvatarFallback>AS</AvatarFallback>
+                </Avatar>
+                <span className="font-medium text-foreground transition-colors group-hover:text-primary">Ashu Shrivastava</span>
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
