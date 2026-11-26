@@ -80,3 +80,4 @@ netlify/
 node_modules/
 livekit.toml.bak
 agent.secrets.env
+app/

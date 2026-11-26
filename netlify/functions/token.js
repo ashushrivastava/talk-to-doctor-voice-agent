@@ -3,6 +3,9 @@ import { AccessToken, RoomAgentDispatch, RoomConfiguration } from "livekit-serve
 
 const AGENT_NAME = "dental-receptionist";
 
+// Implements LiveKit's standard token endpoint (POST in, 201 with server_url and
+// participant_token out). The request body is ignored on purpose: room name, identity
+// and agent dispatch are always chosen here, so a visitor cannot pick a different agent.
 export default async () => {
   const { LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET } = process.env;
   if (!LIVEKIT_URL || !LIVEKIT_API_KEY || !LIVEKIT_API_SECRET) {
@@ -22,9 +25,10 @@ export default async () => {
     agents: [new RoomAgentDispatch({ agentName: AGENT_NAME })],
   });
 
+  const token = await at.toJwt();
   return Response.json(
-    { token: await at.toJwt(), url: LIVEKIT_URL, room },
-    { headers: { "Cache-Control": "no-store" } },
+    { server_url: LIVEKIT_URL, participant_token: token, token, url: LIVEKIT_URL, room },
+    { status: 201, headers: { "Cache-Control": "no-store" } },
   );
 };
 
